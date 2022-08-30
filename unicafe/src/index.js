@@ -19,12 +19,34 @@ const Statistics = ({good,neutral,bad,All}) => {
   if (good > 0 || neutral > 0 || bad > 0) {
     return (
       <div>
-        <Display value={good} text={'Good: '} />
-        <Display value={neutral} text={'Neutral: '} />
-        <Display value={bad} text={'Bad: '} />
-        <Display value={All} text={'All: '} />
-        <Display value={(good - bad)/All} text={'Average: '} />
-        <Display value={(good*100)/All} text={'Positive: '} />
+        <table>
+          <tbody>
+            <tr>
+              <td><Display text={'Good: '} /></td>
+              <td><Display value={good} /></td>
+            </tr>
+            <tr>
+            <td><Display text={'Neutral: '} /></td>
+              <td><Display value={neutral} /></td>
+            </tr>
+            <tr>
+            <td><Display text={'Bad: '} /></td>
+              <td><Display value={bad} /></td>
+            </tr>
+            <tr>
+            <td><Display text={'All: '} /></td>
+              <td><Display value={All} /></td>
+            </tr>
+            <tr>
+              <td><Display text={'Average: '} /></td>
+              <td><Display value={(good - bad)/All} /></td>
+            </tr>
+            <tr>
+              <td><Display text={'Positive: '} /></td>
+              <td><Display value={(good*100)/All} /></td>
+            </tr>
+          </tbody>
+        </table>  
       </div>
     )
   } else {
