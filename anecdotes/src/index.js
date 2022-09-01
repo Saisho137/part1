@@ -9,7 +9,16 @@ const Button = ({ onClick, text }) => (
 
 const App = (props) => {
   const [selected, setSelected] = useState(0)
-  
+  const [points,setPoints] = useState([0,0,0,0,0,0])
+  const copy = [ ...points ]
+
+  const HandleOnClick = () => {
+    return(
+      copy[selected]+=1,
+      setPoints(copy)
+    )
+  }
+
   return (
     <div>
       <p>{props.anecdotes[selected]}</p>
@@ -17,6 +26,7 @@ const App = (props) => {
           setSelected(selected + 1)} else{
             setSelected(0)}}
       } text="Next Anecdote" />
+      <Button onClick={HandleOnClick} text="Vote" />
     </div>
   )
 }
