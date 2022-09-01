@@ -12,6 +12,11 @@ const App = (props) => {
   const [points,setPoints] = useState([0,0,0,0,0,0])
   const copy = [ ...points ]
 
+  console.log(copy)
+  console.log(selected)
+  var maximum = Math.max( ...copy )
+  console.log(maximum)
+
   const HandleOnClick = () => {
     return(
       copy[selected]+=1,
@@ -21,12 +26,15 @@ const App = (props) => {
 
   return (
     <div>
+      <h1>Anecdote of the day</h1>
       <p>{props.anecdotes[selected]}</p>
+      <Button onClick={HandleOnClick} text="Vote" />
       <Button onClick={() => {if(selected<anecdotes.length-1) {
           setSelected(selected + 1)} else{
             setSelected(0)}}
       } text="Next Anecdote" />
-      <Button onClick={HandleOnClick} text="Vote" />
+      <h2>Anecdote with most votes</h2>
+      <p>{props.anecdotes[copy.indexOf(maximum)]}</p>
     </div>
   )
 }
