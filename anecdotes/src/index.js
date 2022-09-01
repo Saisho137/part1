@@ -1,12 +1,22 @@
 import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 
+const Button = ({ onClick, text }) => (
+  <button onClick={onClick}>
+    {text}
+  </button>
+)
+
 const App = (props) => {
   const [selected, setSelected] = useState(0)
-
+  
   return (
     <div>
-      {props.anecdotes[selected]}
+      <p>{props.anecdotes[selected]}</p>
+      <Button onClick={() => {if(selected<anecdotes.length-1) {
+          setSelected(selected + 1)} else{
+            setSelected(0)}}
+      } text="Next Anecdote" />
     </div>
   )
 }
